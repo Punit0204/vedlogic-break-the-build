@@ -10,11 +10,9 @@ public class LoginPage {
     private final WebDriver driver;
     private final WaitUtils waitUtils;
 
-    // Intentional bug: username locator works, password locator is incorrect.
     private final By usernameInput = By.id("user-name");
     private final By passwordInput = By.id("password1");
     private final By loginButton = By.id("login-button");
-    private final By errorMessage = By.cssSelector("h3[data-test='error']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -46,9 +44,5 @@ public class LoginPage {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
-    }
-
-    public String getErrorMessage() {
-        return driver.findElement(errorMessage).getText();
     }
 }

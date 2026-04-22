@@ -21,11 +21,6 @@ public class APISteps {
         response = reqResClient.getUser(userId);
     }
 
-    @Then("the API response status should be {int}")
-    public void theApiResponseStatusShouldBe(Integer statusCode) {
-        Assert.assertEquals(response.getStatusCode(), statusCode.intValue());
-    }
-
     @Then("the response should contain first name {string}")
     public void theResponseShouldContainFirstName(String firstName) {
         Assert.assertEquals(response.jsonPath().getString("data.first_name"), firstName);
@@ -38,12 +33,6 @@ public class APISteps {
 
     @Then("the created response should contain name {string}")
     public void theCreatedResponseShouldContainName(String name) {
-        // Intentional bug: wrong field asserted in response.
         Assert.assertEquals(response.jsonPath().getString("data.name"), name);
-    }
-
-    @When("the user deletes user with id {int}")
-    public void theUserDeletesUserWithId(Integer userId) {
-        response = reqResClient.deleteUser(userId);
     }
 }

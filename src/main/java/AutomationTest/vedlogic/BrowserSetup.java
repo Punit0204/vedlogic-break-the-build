@@ -23,7 +23,6 @@ public class BrowserSetup {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
-            // Intentional design issue: headless not configurable, arguments minimal.
             driver = new ChromeDriver(options);
         }
 

@@ -16,7 +16,6 @@ public class Hook {
 
     @After("@ui")
     public void afterUiScenario(Scenario scenario) {
-        // Intentional weakness: no screenshot capture on failure.
         DriverManager.quitDriver();
     }
 }
