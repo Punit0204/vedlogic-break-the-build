@@ -8,7 +8,6 @@ public class CheckoutPage {
 
     private final By firstName = By.id("first-name");
     private final By lastName = By.id("last-name");
-    // Intentional bug: wrong field id
     private final By postalCode = By.id("postal");
     private final By continueButton = By.id("continue");
     private final By finishButton = By.id("finish");

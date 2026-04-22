@@ -37,7 +37,6 @@ public class ReqResClient {
 
     public Response createUser(String name, String job) {
         Map<String, Object> requestBody = new HashMap<String, Object>();
-        // Intentional bug: wrong field name for API payload.
         requestBody.put("namee", name);
         requestBody.put("job", job);
 
@@ -45,20 +44,10 @@ public class ReqResClient {
                 .contentType(ContentType.JSON)
                 .body(requestBody)
                 .when()
-                // Intentional bug: wrong path
                 .post("/api/user")
                 .then()
                 .extract()
                 .response();
     }
 
-    public Response deleteUser(int userId) {
-        return RestAssured.given()
-                .contentType(ContentType.JSON)
-                .when()
-                .delete("/api/users/" + userId)
-                .then()
-                .extract()
-                .response();
-    }
 }

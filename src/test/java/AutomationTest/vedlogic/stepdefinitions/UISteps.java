@@ -6,7 +6,6 @@ import AutomationTest.vedlogic.pages.CartPage;
 import AutomationTest.vedlogic.pages.CheckoutPage;
 import AutomationTest.vedlogic.pages.LoginPage;
 import AutomationTest.vedlogic.pages.ProductsPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,22 +24,12 @@ public class UISteps {
 
     @When("the user logs in with valid credentials")
     public void theUserLogsInWithValidCredentials() {
-        loginPage.loginAs(ConfigReader.get("username"), ConfigReader.get("password"));
+        loginPage.loginAs(ConfigReader.get("user"), ConfigReader.get("password"));
     }
 
     @Then("the products page should be displayed")
     public void theProductsPageShouldBeDisplayed() {
         Assert.assertEquals(productsPage.getTitle(), "Product", "Products page title mismatch");
-    }
-
-    @And("the user adds a backpack to the cart")
-    public void theUserAddsABackpackToTheCart() {
-        productsPage.addBackpackToCart();
-    }
-
-    @And("the user opens the cart")
-    public void theUserOpensTheCart() {
-        productsPage.openCart();
     }
 
     @Then("the cart should contain the backpack")
@@ -61,13 +50,4 @@ public class UISteps {
         Assert.assertEquals(checkoutPage.getSuccessMessage(), "THANK YOU FOR YOU ORDER");
     }
 
-    @When("the user logs in with username {string} and password {string}")
-    public void theUserLogsInWithUsernameAndPassword(String username, String password) {
-        loginPage.loginAs(username, password);
-    }
-
-    @Then("an error message should be displayed")
-    public void anErrorMessageShouldBeDisplayed() {
-        Assert.assertTrue(loginPage.getErrorMessage().contains("Username and password do not match"));
-    }
 }
